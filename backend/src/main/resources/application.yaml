@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Starter
+  datasource:
+    url: jdbc:postgresql://localhost:5434/starter
+    username: postgres
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
