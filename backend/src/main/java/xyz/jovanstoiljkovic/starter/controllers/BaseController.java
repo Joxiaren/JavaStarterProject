@@ -1,61 +1,73 @@
 package xyz.jovanstoiljkovic.starter.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
-import xyz.jovanstoiljkovic.starter.mappers.BaseMapper;
-import xyz.jovanstoiljkovic.starter.services.BaseService;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseController<
-        T,
-        RequestDTO extends BaseDTO<T>,
-        ResponseDTO extends BaseDTO<T>,
-        Mapper extends BaseMapper<T, RequestDTO, ResponseDTO>
-> {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-    @Autowired
-    BaseService<T> service;
-    @Autowired
-    Mapper mapper;
+import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
+import xyz.jovanstoiljkovic.starter.mappers.BaseMapper;
+import xyz.jovanstoiljkovic.starter.models.BaseEntity;
+import xyz.jovanstoiljkovic.starter.services.BaseService;
 
-    public BaseController(){}
+public abstract class BaseController<T extends BaseEntity, RequestDTO extends BaseDTO<T>, ResponseDTO extends BaseDTO<T>, ResponseDTOLeaf extends BaseDTO<T>, Mapper extends BaseMapper<T, RequestDTO, ResponseDTO, ResponseDTOLeaf>> {
 
-    @GetMapping
-    public List<ResponseDTO> findAll(){
-        List<ResponseDTO> result = new ArrayList<>();
-        service.findAll().forEach(item-> result.add(mapper.entityToResponse(item)));
-        return result;
-    }
+	@Autowired
+	BaseService<T> service;
+	@Autowired
+	Mapper mapper;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ResponseDTO> findById(@PathVariable int id){
-        return service.findById(id)
-                .map(item -> ResponseEntity.ok(mapper.entityToResponse(item)))
-                .orElse(ResponseEntity.notFound().build());
-    }
+	public BaseController() {
+		super();
+	}
 
-    @PostMapping
-    public ResponseEntity<ResponseDTO> create(@RequestBody RequestDTO item){
-        return service.create(mapper.requestToEntity(item))
-                .map(itemT -> ResponseEntity.ok(mapper.entityToResponse(itemT)))
-                .orElse(ResponseEntity.badRequest().build());
-    }
+	@GetMapping
+	public List<ResponseDTO> findAll() {
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ResponseDTO> update(@PathVariable int id, @RequestBody RequestDTO item){
-        return service.update(id, mapper.requestToEntity(item))
-                .map(itemT -> ResponseEntity.ok(mapper.entityToResponse(itemT)))
-                .orElse(ResponseEntity.badRequest().build());
-    }
+		List<ResponseDTO> result = new ArrayList<>();
+		service.findAll().forEach(item -> result.add(mapper.entityToResponse(item)));
+		return result;
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable int id){
-        service.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<ResponseDTO> findById(@PathVariable Long id) {
+		return service.findById(id).map(item -> ResponseEntity.ok(mapper.entityToResponse(item)))
+				.orElse(ResponseEntity.notFound().build());
+	}
+
+	@PostMapping
+	public ResponseEntity<ResponseDTO> create(@RequestBody RequestDTO item) {
+		return service.create(mapper.requestToEntity(item))
+				.map(itemT -> ResponseEntity.ok(mapper.entityToResponse(itemT)))
+				.orElse(ResponseEntity.badRequest().build());
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<ResponseDTO> updatePut(@PathVariable  Long id, @RequestBody RequestDTO item) {
+		return service.update(id, mapper.requestToEntity(item))
+				.map(itemT -> ResponseEntity.ok(mapper.entityToResponse(itemT)))
+				.orElse(ResponseEntity.badRequest().build());
+	}
+
+	@PatchMapping("/{id}")
+	public ResponseEntity<ResponseDTO> updatePatch(@PathVariable Long id, @RequestBody RequestDTO item) {
+		return service.updatePatch(id, mapper.requestToEntity(item))
+				.map(itemT -> ResponseEntity.ok(mapper.entityToResponse(itemT)))
+				.orElse(ResponseEntity.badRequest().build());
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+		service.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
 
 }
