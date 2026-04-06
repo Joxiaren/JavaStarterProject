@@ -18,7 +18,13 @@ import xyz.jovanstoiljkovic.starter.mappers.BaseMapper;
 import xyz.jovanstoiljkovic.starter.models.BaseEntity;
 import xyz.jovanstoiljkovic.starter.services.BaseService;
 
-public abstract class BaseController<T extends BaseEntity, RequestDTO extends BaseDTO<T>, ResponseDTO extends BaseDTO<T>, ResponseDTOLeaf extends BaseDTO<T>, Mapper extends BaseMapper<T, RequestDTO, ResponseDTO, ResponseDTOLeaf>> {
+public abstract class BaseController<
+		T extends BaseEntity,
+		RequestDTO extends BaseDTO<T>,
+		ResponseDTO extends BaseDTO<T>,
+		ResponseDTOLeaf extends BaseDTO<T>,
+		Mapper extends BaseMapper<T, RequestDTO, ResponseDTO, ResponseDTOLeaf>
+> {
 
 	@Autowired
 	BaseService<T> service;

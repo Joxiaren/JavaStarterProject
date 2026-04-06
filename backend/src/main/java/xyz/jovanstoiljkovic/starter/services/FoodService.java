@@ -8,6 +8,7 @@ import xyz.jovanstoiljkovic.starter.models.Food;
 
 @Service
 public class FoodService extends BaseService<Food> {
+	
 	@Override
 	public Optional<Food> updatePatch(Long id, Food item) {
 		Optional<Food> op = repo.findById(id);
@@ -29,4 +30,5 @@ public class FoodService extends BaseService<Food> {
 		repo.save(entity);
 		return Optional.of(entity);
 	}
+	
 }

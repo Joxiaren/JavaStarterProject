@@ -10,7 +10,7 @@ import xyz.jovanstoiljkovic.starter.mappers.MenuMapper;
 import xyz.jovanstoiljkovic.starter.models.Menu;
 
 @RestController
-@RequestMapping(value = { "api/menu" })
+@RequestMapping(value = { "/api/menu" })
 public class MenuController extends BaseController<Menu, MenuRequestDTO, MenuResponseDTO, MenuResponseDTOLeaf, MenuMapper> {
 
 }
