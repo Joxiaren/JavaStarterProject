@@ -1,14 +1,21 @@
 spring:
   application:
-    name: Starter
+    name: ${APP_NAME:Starter}
+  config:
+    import: "optional:file:.env[.properties]"
   datasource:
-    url: jdbc:postgresql://localhost:5434/starter
-    username: postgres
-    password: root
+    url: ${DB_URL:jdbc:mysql://localhost:9911/starter}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+  jackson:
+    mapper:
+      sort-properties-alphabetically: false
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.${DB_DIALECT:MySQLDialect}
+server:
+    port: ${PORT:8080}

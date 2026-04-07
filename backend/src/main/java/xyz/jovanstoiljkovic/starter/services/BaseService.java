@@ -1,45 +1,64 @@
 package xyz.jovanstoiljkovic.starter.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import xyz.jovanstoiljkovic.starter.models.Food;
-
-import java.util.List;
 import java.util.Optional;
 
-public abstract class BaseService<T> {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 
-    @Autowired
-    JpaRepository<T, Integer> repo;
+import xyz.jovanstoiljkovic.starter.models.BaseEntity;
 
-    public List<T> findAll(){
-        return repo.findAll();
-    };
-    public Optional<T> findById(int id){
-        return repo.findById(id);
-    }
-    public Optional<T> create(T item){
-        T savedItem;
-        savedItem = repo.save(item);
+public abstract class BaseService<T extends BaseEntity> {
 
-        if(savedItem == null) return Optional.empty();
+	@Autowired
+	CrudRepository<T, Long> repo;
 
-        return Optional.of(savedItem);
-    }
-    public Optional<T> update(int id, T item){
-        T savedItem;
-        savedItem = repo.save(item);
+	public Iterable<T> findAll() {
+		return repo.findAll();
+	};
 
-        if(savedItem == null) return Optional.empty();
+	public Optional<T> findById(Long id) {
+		return repo.findById(id);
+	}
 
-        return Optional.of(savedItem);
-    }
-    public boolean delete(T item){
-        repo.delete(item);
-        return true;
-    }
-    public boolean deleteById(int id){
-        repo.deleteById(id);
-        return true;
-    }
+	public Optional<T> create(T item) {
+		T savedItem;
+		savedItem = repo.save(item);
+
+		if (savedItem == null)
+			return Optional.empty();
+
+		return Optional.of(savedItem);
+	}
+
+	public Optional<T> update(Long id, T item) {
+		Optional<T> exist = this.findById(id);
+		if (exist.isEmpty()) {
+			return Optional.empty();
+		}
+		
+		item.setId(id);
+
+		T savedItem;
+		savedItem = repo.save(item);
+
+		if (savedItem == null)
+			return Optional.empty();
+
+		return Optional.of(savedItem);
+	}
+
+	public abstract Optional<T> updatePatch(Long id, T item);
+
+	public boolean delete(T item) {
+		return this.deleteById(item.getId());
+	}
+
+	public boolean deleteById(Long id) {
+		Optional<T> exist = this.findById(id);
+		if (exist.isEmpty()) {
+			return false;
+		}
+		repo.deleteById(id);
+		return true;
+	}
 }
