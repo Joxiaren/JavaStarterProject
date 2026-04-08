@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import xyz.jovanstoiljkovic.starter.controllers.FoodController;
-import xyz.jovanstoiljkovic.starter.dtos.responses.FoodResponseDTO;
+import xyz.jovanstoiljkovic.starter.dtos.food.FoodResponseDTO;
 import xyz.jovanstoiljkovic.starter.mappers.FoodMapper;
 import xyz.jovanstoiljkovic.starter.models.Food;
 import xyz.jovanstoiljkovic.starter.services.FoodService;

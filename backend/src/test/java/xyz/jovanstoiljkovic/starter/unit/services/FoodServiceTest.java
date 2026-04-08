@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
@@ -37,10 +38,12 @@ class FoodServiceTest {
     class UpdateTests {
         @Test
         void whenIdIsFound_returnUpdatedItem() {
-            when(repo.findById(eq(10))).thenReturn(Optional.of(gen.generate()));
+            when(repo.findById(eq(10L))).thenReturn(Optional.of(gen.generate()));
             Food item = gen.generate();
 
-            Optional<Food> result = service.update(10, item);
+            when(repo.save(any())).thenReturn(item);
+
+            Optional<Food> result = service.update(10L, item);
 
             assertFalse(result.isEmpty());
             assertEquals(result.get().getName(), item.getName());
@@ -48,10 +51,10 @@ class FoodServiceTest {
 
         @Test
         void whenIdIsNotFound_returnEmptyOptional() {
-            when(repo.findById(eq(11))).thenReturn(Optional.empty());
+            when(repo.findById(eq(11L))).thenReturn(Optional.empty());
             Food item = gen.generate();
 
-            Optional<Food> result = service.update(11, item);
+            Optional<Food> result = service.update(11L, item);
 
             assert(result.isEmpty());
         }

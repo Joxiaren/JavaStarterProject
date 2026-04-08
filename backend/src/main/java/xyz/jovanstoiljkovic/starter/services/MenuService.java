@@ -2,12 +2,17 @@ package xyz.jovanstoiljkovic.starter.services;
 
 import java.util.Optional;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import xyz.jovanstoiljkovic.starter.models.Menu;
 
 @Service
 public class MenuService extends BaseService<Menu> {
+
+	public MenuService(CrudRepository<Menu, Long> repo) {
+		super(repo);
+	}
 
 	@Override
 	public Optional<Menu> updatePatch(Long id, Menu item) {

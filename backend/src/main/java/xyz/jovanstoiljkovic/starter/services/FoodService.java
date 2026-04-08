@@ -10,7 +10,7 @@ import xyz.jovanstoiljkovic.starter.models.Food;
 @Service
 public class FoodService extends BaseService<Food>{
 
-    public FoodService(CrudRepository<Food, Integer> repo) {
+    public FoodService(CrudRepository<Food, Long> repo) {
         super(repo);
     }
 

@@ -18,7 +18,7 @@ public class FoodDataGenerator extends BaseDataGenerator<Food> {
     public Food generate() {
         Food item = new Food();
 
-        item.setId(r.nextInt(1000));
+        item.setId(r.nextLong(1000));
         item.setName(RandomStringUtils.insecure().next(10));
         item.setExpiryDate(new Date());
         item.setIngredientCount(r.nextInt(15));
