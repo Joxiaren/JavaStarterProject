@@ -1,5 +1,6 @@
 package xyz.jovanstoiljkovic.starter.services;
 
+import java.lang.reflect.Field;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -48,7 +49,23 @@ public abstract class BaseService<T extends BaseEntity> {
 		return Optional.of(savedItem);
 	}
 
-	public abstract Optional<T> updatePatch(Long id, T item);
+	public Optional<T> updatePatch(Long id, T item) {
+	    return this.findById(id).map(existingEntity -> {
+	        for (Field field : item.getClass().getDeclaredFields()) {
+	        	// private field access
+	            field.setAccessible(true);
+	            try {
+	                Object value = field.get(item);
+	                if (value != null) {
+	                    field.set(existingEntity, value);
+	                }
+	            } catch (IllegalAccessException e) {
+	                throw new RuntimeException("Patch failed for field: " + field.getName(), e);
+	            }
+	        }
+	        return repo.save(existingEntity);
+	    });
+	}
 
 	public boolean delete(T item) {
 		return this.deleteById(item.getId());
