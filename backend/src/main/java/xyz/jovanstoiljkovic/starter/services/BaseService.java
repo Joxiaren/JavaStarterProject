@@ -2,14 +2,12 @@ package xyz.jovanstoiljkovic.starter.services;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
 import xyz.jovanstoiljkovic.starter.models.BaseEntity;
 
 public abstract class BaseService<T extends BaseEntity> {
 
-	@Autowired
 	CrudRepository<T, Long> repo;
 
   public BaseService(CrudRepository<T, Long> repo) {
