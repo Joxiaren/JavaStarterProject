@@ -2,16 +2,17 @@ package xyz.jovanstoiljkovic.starter.services;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
 import xyz.jovanstoiljkovic.starter.models.BaseEntity;
 
 public abstract class BaseService<T extends BaseEntity> {
 
-	@Autowired
 	CrudRepository<T, Long> repo;
 
+  public BaseService(CrudRepository<T, Long> repo) {
+    this.repo = repo;
+  }
 	public Iterable<T> findAll() {
 		return repo.findAll();
 	};
@@ -52,8 +53,8 @@ public abstract class BaseService<T extends BaseEntity> {
 	public boolean delete(T item) {
 		return this.deleteById(item.getId());
 	}
-
-	public boolean deleteById(Long id) {
+  
+  public boolean deleteById(Long id) {
 		Optional<T> exist = this.findById(id);
 		if (exist.isEmpty()) {
 			return false;
@@ -61,4 +62,5 @@ public abstract class BaseService<T extends BaseEntity> {
 		repo.deleteById(id);
 		return true;
 	}
+
 }

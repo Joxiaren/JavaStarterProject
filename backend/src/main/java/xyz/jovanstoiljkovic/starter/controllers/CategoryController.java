@@ -8,9 +8,13 @@ import xyz.jovanstoiljkovic.starter.dtos.category.CategoryResponseDTO;
 import xyz.jovanstoiljkovic.starter.dtos.category.CategoryResponseDTOLeaf;
 import xyz.jovanstoiljkovic.starter.mappers.CategoryMapper;
 import xyz.jovanstoiljkovic.starter.models.Category;
+import xyz.jovanstoiljkovic.starter.services.BaseService;
 
 @RestController
 @RequestMapping(value = { "/api/category" })
 public class CategoryController extends BaseController<Category, CategoryRequestDTO, CategoryResponseDTO, CategoryResponseDTOLeaf, CategoryMapper> {
 
+    public CategoryController(BaseService<Category> service, CategoryMapper mapper) {
+        super(service, mapper);
+    }
 }

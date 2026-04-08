@@ -8,9 +8,13 @@ import xyz.jovanstoiljkovic.starter.dtos.food.FoodResponseDTO;
 import xyz.jovanstoiljkovic.starter.dtos.food.FoodResponseDTOLeaf;
 import xyz.jovanstoiljkovic.starter.mappers.FoodMapper;
 import xyz.jovanstoiljkovic.starter.models.Food;
+import xyz.jovanstoiljkovic.starter.services.BaseService;
 
 @RestController
 @RequestMapping(value = { "/api/food" })
 public class FoodController extends BaseController<Food, FoodRequestDTO, FoodResponseDTO, FoodResponseDTOLeaf, FoodMapper> {
 
+    public FoodController(BaseService<Food> service, FoodMapper mapper) {
+        super(service, mapper);
+    }
 }

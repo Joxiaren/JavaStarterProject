@@ -3,7 +3,6 @@ package xyz.jovanstoiljkovic.starter.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,15 +25,13 @@ public abstract class BaseController<
 		Mapper extends BaseMapper<T, RequestDTO, ResponseDTO, ResponseDTOLeaf>
 > {
 
-	@Autowired
-	BaseService<T> service;
-	@Autowired
-	Mapper mapper;
+    BaseService<T> service;
+    Mapper mapper;
 
-	public BaseController() {
-		super();
-	}
-
+    public BaseController(BaseService<T> service, Mapper mapper){
+        this.service = service;
+        this.mapper = mapper;
+    }
 	@GetMapping
 	public List<ResponseDTO> findAll() {
 
@@ -75,5 +72,4 @@ public abstract class BaseController<
 		service.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-
 }

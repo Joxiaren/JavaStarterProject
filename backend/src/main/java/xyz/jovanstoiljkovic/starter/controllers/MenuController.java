@@ -8,9 +8,13 @@ import xyz.jovanstoiljkovic.starter.dtos.menu.MenuResponseDTO;
 import xyz.jovanstoiljkovic.starter.dtos.menu.MenuResponseDTOLeaf;
 import xyz.jovanstoiljkovic.starter.mappers.MenuMapper;
 import xyz.jovanstoiljkovic.starter.models.Menu;
+import xyz.jovanstoiljkovic.starter.services.BaseService;
 
 @RestController
 @RequestMapping(value = { "/api/menu" })
 public class MenuController extends BaseController<Menu, MenuRequestDTO, MenuResponseDTO, MenuResponseDTOLeaf, MenuMapper> {
 
+    public MenuController(BaseService<Menu> service, MenuMapper mapper) {
+        super(service, mapper);
+    }
 }
