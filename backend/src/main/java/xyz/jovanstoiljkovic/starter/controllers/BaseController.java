@@ -17,12 +17,13 @@ public abstract class BaseController<
         Mapper extends BaseMapper<T, RequestDTO, ResponseDTO>
 > {
 
-    @Autowired
     BaseService<T> service;
-    @Autowired
     Mapper mapper;
 
-    public BaseController(){}
+    public BaseController(BaseService<T> service, Mapper mapper){
+        this.service = service;
+        this.mapper = mapper;
+    }
 
     @GetMapping
     public List<ResponseDTO> findAll(){
@@ -57,5 +58,4 @@ public abstract class BaseController<
         service.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-
 }

@@ -1,5 +1,6 @@
 package xyz.jovanstoiljkovic.starter.services;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import xyz.jovanstoiljkovic.starter.models.Food;
 
@@ -7,6 +8,11 @@ import java.util.Optional;
 
 @Service
 public class FoodService extends BaseService<Food>{
+
+    public FoodService(JpaRepository<Food, Integer> repo) {
+        super(repo);
+    }
+
     @Override
     public Optional<Food> update(int id, Food item){
         Optional<Food> opFood = repo.findById(id);
