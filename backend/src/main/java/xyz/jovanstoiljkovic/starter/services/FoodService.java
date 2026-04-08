@@ -1,32 +1,39 @@
 package xyz.jovanstoiljkovic.starter.services;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
-import xyz.jovanstoiljkovic.starter.models.Food;
-
+import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import xyz.jovanstoiljkovic.starter.models.Food;
 
 @Service
 public class FoodService extends BaseService<Food>{
 
-    public FoodService(JpaRepository<Food, Integer> repo) {
+    public FoodService(CrudRepository<Food, Integer> repo) {
         super(repo);
     }
 
-    @Override
-    public Optional<Food> update(int id, Food item){
-        Optional<Food> opFood = repo.findById(id);
+	@Override
+	public Optional<Food> updatePatch(Long id, Food item) {
+		Optional<Food> op = repo.findById(id);
 
-        if(opFood.isEmpty()) return opFood;
+		if (op.isEmpty())
+			return op;
 
-        Food food = opFood.get();
+		Food entity = op.get();
 
-        if(item.getName() != null) food.setName(item.getName());
-        if(item.getCalories() != null) food.setCalories(item.getCalories());
-        if(item.getIngredientCount() != null) food.setIngredientCount(item.getIngredientCount());
-        if(item.getExpiryDate() != null) food.setExpiryDate(item.getExpiryDate());
+		if (item.getName() != null)
+			entity.setName(item.getName());
+		if (item.getCalories() != null)
+			entity.setCalories(item.getCalories());
+		if (item.getIngredientCount() != null)
+			entity.setIngredientCount(item.getIngredientCount());
+		if (item.getExpiryDate() != null)
+			entity.setExpiryDate(item.getExpiryDate());
 
-        repo.save(food);
-        return Optional.of(food);
-    }
+		repo.save(entity);
+		return Optional.of(entity);
+	}
+	
 }

@@ -1,60 +1,68 @@
 package xyz.jovanstoiljkovic.starter.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 import java.util.Optional;
 
-public abstract class BaseService<T> {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 
-    JpaRepository<T, Integer> repo;
+import xyz.jovanstoiljkovic.starter.models.BaseEntity;
 
-    public BaseService(JpaRepository<T, Integer> repo) {
-        this.repo = repo;
-    }
+public abstract class BaseService<T extends BaseEntity> {
 
-    public List<T> findAll() {
-        return repo.findAll();
-    }
+	@Autowired
+	CrudRepository<T, Long> repo;
 
-    public Optional<T> findById(int id) {
-        return repo.findById(id);
-    }
+  public BaseService(CrudRepository<T, Long> repo) {
+    this.repo = repo;
+  }
+	public Iterable<T> findAll() {
+		return repo.findAll();
+	};
 
-    public Optional<T> create(T item) {
-        T savedItem;
-        savedItem = repo.save(item);
+	public Optional<T> findById(Long id) {
+		return repo.findById(id);
+	}
 
-        if (savedItem == null) return Optional.empty();
+	public Optional<T> create(T item) {
+		T savedItem;
+		savedItem = repo.save(item);
 
-        return Optional.of(savedItem);
-    }
+		if (savedItem == null)
+			return Optional.empty();
 
-    public Optional<T> update(int id, T item) {
-        T savedItem;
-        savedItem = repo.save(item);
+		return Optional.of(savedItem);
+	}
 
-        if (savedItem == null) return Optional.empty();
+	public Optional<T> update(Long id, T item) {
+		Optional<T> exist = this.findById(id);
+		if (exist.isEmpty()) {
+			return Optional.empty();
+		}
+		
+		item.setId(id);
 
-        return Optional.of(savedItem);
-    }
+		T savedItem;
+		savedItem = repo.save(item);
 
-    public boolean delete(T item) {
-        repo.delete(item);
-        return true;
-    }
+		if (savedItem == null)
+			return Optional.empty();
 
-    public boolean deleteById(int id) {
-        repo.deleteById(id);
-        return true;
-    }
+		return Optional.of(savedItem);
+	}
 
-    public JpaRepository<T, Integer> getRepo() {
-        return repo;
-    }
+	public abstract Optional<T> updatePatch(Long id, T item);
 
-    public void setRepo(JpaRepository<T, Integer> repo) {
-        this.repo = repo;
-    }
+	public boolean delete(T item) {
+		return this.deleteById(item.getId());
+	}
+  
+  public boolean deleteById(Long id) {
+		Optional<T> exist = this.findById(id);
+		if (exist.isEmpty()) {
+			return false;
+		}
+		repo.deleteById(id);
+		return true;
+	}
+
 }

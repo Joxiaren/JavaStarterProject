@@ -1,41 +1,35 @@
-package xyz.jovanstoiljkovic.starter.models;
+package xyz.jovanstoiljkovic.starter.dtos.food;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
+import xyz.jovanstoiljkovic.starter.dtos.menu.MenuRequestDTO;
+import xyz.jovanstoiljkovic.starter.models.Food;
 
-@Entity
-@Table(name = "food")
-public class Food extends BaseEntity {
-
-	@Column(nullable = false)
+public class FoodRequestDTO extends BaseDTO<Food> {
 	private String name;
 	private Double calories;
 	private Integer ingredientCount;
 	private Date expiryDate;
 	
-	@OneToMany(mappedBy = "food")
-	private List<Menu> menus = new ArrayList<>();
+	private List<MenuRequestDTO> menus = new ArrayList<MenuRequestDTO>();
 
-	public Food() {
+	public FoodRequestDTO() {
 		super();
 	}
-	public Food(Long id) {
-		super(id);
-	}
-	public Food(Long id, String name, Double calories, Integer ingredientCount, Date expiryDate) {
-		super(id);
+
+	public FoodRequestDTO(String name, Double calories, Integer ingredientCount, Date expiryDate) {
+		super();
 		this.name = name;
 		this.calories = calories;
 		this.ingredientCount = ingredientCount;
 		this.expiryDate = expiryDate;
 	}
-	public Food(String name, Double calories, Integer ingredientCount, Date expiryDate, List<Menu> menus) {
+	
+	public FoodRequestDTO(String name, Double calories, Integer ingredientCount, Date expiryDate,
+			List<MenuRequestDTO> menus) {
 		super();
 		this.name = name;
 		this.calories = calories;
@@ -47,31 +41,40 @@ public class Food extends BaseEntity {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public Double getCalories() {
 		return calories;
 	}
+
 	public void setCalories(Double calories) {
 		this.calories = calories;
 	}
+
 	public Integer getIngredientCount() {
 		return ingredientCount;
 	}
+
 	public void setIngredientCount(Integer ingredientCount) {
 		this.ingredientCount = ingredientCount;
 	}
+
 	public Date getExpiryDate() {
 		return expiryDate;
 	}
+
 	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
-	public List<Menu> getMenus() {
+
+	public List<MenuRequestDTO> getMenus() {
 		return menus;
 	}
-	public void setMenus(List<Menu> menus) {
+
+	public void setMenus(List<MenuRequestDTO> menus) {
 		this.menus = menus;
 	}
 	
