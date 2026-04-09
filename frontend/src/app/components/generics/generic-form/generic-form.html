@@ -1,0 +1,16 @@
+<form [formGroup]="form" (submit)="addEvent()">
+    <div>
+        <label for=""></label>
+        <input type="" formControlName="" name=""/>
+    </div>
+    <div>
+        <button>
+            @if (mode() === "add"){
+                Dodaj 
+            }
+            @else{
+                Izmeni
+            }
+        </button>
+    </div>
+</form>

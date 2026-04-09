@@ -1,0 +1,5 @@
+<div>
+    <h2>Food</h2>
+    <app-food-form [editItem]="foodControl.itemEdit()" (addEmit)="foodControl.addItem($event)" (editEmit)="foodControl.editItem($event)"></app-food-form>
+    <app-food-table [items]="foodControl.items" (deleteEmit)="foodControl.deleteItem($event)" (editEmit)="foodControl.setEditItem($event)"></app-food-table>
+</div>
