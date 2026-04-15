@@ -3,14 +3,13 @@ services:
     container_name: database
     image: postgres:17-alpine
     restart: always
-    environment:
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+    env_file: 
+      - path: ./db/.env
+        required: false
     volumes:
       - db_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}"]
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -25,15 +24,13 @@ services:
     container_name: pgadmin4_container
     image: dpage/pgadmin4
     restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
-      #PGADMIN_CONFIG_SCRIPT_NAME: "'/pgadmin'"
-      PGADMIN_CONFIG_CONSOLE_LOG_LEVEL : 30
+    env_file: 
+        - path: ./pgadmin/.env
+          required: false
     healthcheck:
       #test: ["CMD", "wget", "-O", "-", "http://localhost:80/misc/ping"]
-      test: ["CMD-SHELL", "curl -f http://localhost:80/misc/ping || exit 1 > /dev/null 2>&1"]
-      #test: ["CMD-SHELL", "timeout 1s bash -c ':> /dev/tcp/localhost/80' || exit 1"]
+      test: ["CMD-SHELL", "timeout 1s bash -c ':> /dev/tcp/localhost/80' || exit 1"]
+      #test: ["CMD-SHELL", "curl -f http://localhost:80/misc/ping > /dev/null 2>&1 || exit 1"]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -56,7 +53,9 @@ services:
         - path: ./backend/.env
           required: false
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/api/food"]
+      #test: ["CMD", "curl", "-f", "http://localhost/api/food"]
+      #test: ["CMD-SHELL", "timeout 1s bash -c ':> /dev/tcp/localhost/$$PORT' || exit 1"]
+      test: ["CMD-SHELL", "nc -zv localhost 8080"]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -80,6 +79,8 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     healthcheck:
       #test: ["CMD", "curl", "-f", "http://localhost:80"]
+      #test: ["CMD-SHELL", "nc -z localhost 80 || exit 1"]
+      test: ["CMD-SHELL", "timeout 1s sh -c ':> /dev/tcp/localhost/80' || exit 1"]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -90,10 +91,12 @@ services:
         limits:
           memory: 1G  
     depends_on:
-      - db   
-      - pgadmin
-      - backend
-            
+      db:
+        condition: service_healthy
+      pgadmin:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
 
 volumes:
   db_data:      
