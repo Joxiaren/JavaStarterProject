@@ -5,23 +5,23 @@ import java.util.Date;
 import java.util.List;
 
 import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
-import xyz.jovanstoiljkovic.starter.dtos.menu.MenuResponseDTOLeaf;
+import xyz.jovanstoiljkovic.starter.dtos.menu.MenuDTOLeaf;
 import xyz.jovanstoiljkovic.starter.models.Food;
 
-public class FoodResponseDTO extends BaseDTO<Food> {
+public class FoodDTO extends BaseDTO<Food> {
 	private Long id;
 	private String name;
 	private Double calories;
 	private Integer ingredientCount;
 	private Date expiryDate;
 	
-	private List<MenuResponseDTOLeaf> menus = new ArrayList<MenuResponseDTOLeaf>();
+	private List<MenuDTOLeaf> menus = new ArrayList<MenuDTOLeaf>();
 
-	public FoodResponseDTO() {
+	public FoodDTO() {
 		super();
 	}
 
-	public FoodResponseDTO(Long id, String name, Double calories, Integer ingredientCount, Date expiryDate) {
+	public FoodDTO(Long id, String name, Double calories, Integer ingredientCount, Date expiryDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -30,7 +30,7 @@ public class FoodResponseDTO extends BaseDTO<Food> {
 		this.expiryDate = expiryDate;
 	}
 
-	public FoodResponseDTO(Long id, String name, Double calories, Integer ingredientCount, Date expiryDate, List<MenuResponseDTOLeaf> menus) {
+	public FoodDTO(Long id, String name, Double calories, Integer ingredientCount, Date expiryDate, List<MenuDTOLeaf> menus) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -80,11 +80,11 @@ public class FoodResponseDTO extends BaseDTO<Food> {
 		this.expiryDate = expiryDate;
 	}
 
-	public List<MenuResponseDTOLeaf> getMenus() {
+	public List<MenuDTOLeaf> getMenus() {
 		return menus;
 	}
 
-	public void setMenus(List<MenuResponseDTOLeaf> menus) {
+	public void setMenus(List<MenuDTOLeaf> menus) {
 		this.menus = menus;
 	}
 	

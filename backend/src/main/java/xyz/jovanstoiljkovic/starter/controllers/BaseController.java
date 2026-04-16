@@ -19,10 +19,9 @@ import xyz.jovanstoiljkovic.starter.services.BaseService;
 
 public abstract class BaseController<
 		T extends BaseEntity,
-		RequestDTO extends BaseDTO<T>,
-		ResponseDTO extends BaseDTO<T>,
-		ResponseDTOLeaf extends BaseDTO<T>,
-		Mapper extends BaseMapper<T, RequestDTO, ResponseDTO, ResponseDTOLeaf>
+		DTO extends BaseDTO<T>,
+		DTOLeaf extends BaseDTO<T>,
+		Mapper extends BaseMapper<T, DTO, DTOLeaf>
 > {
 
     BaseService<T> service;
@@ -33,37 +32,37 @@ public abstract class BaseController<
         this.mapper = mapper;
     }
 	@GetMapping
-	public List<ResponseDTO> findAll() {
+	public List<DTO> findAll() {
 
-		List<ResponseDTO> result = new ArrayList<>();
-		service.findAll().forEach(item -> result.add(mapper.entityToResponse(item)));
+		List<DTO> result = new ArrayList<>();
+		service.findAll().forEach(item -> result.add(mapper.entityToDTO(item)));
 		return result;
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ResponseDTO> findById(@PathVariable Long id) {
-		return service.findById(id).map(item -> ResponseEntity.ok(mapper.entityToResponse(item)))
+	public ResponseEntity<DTO> findById(@PathVariable Long id) {
+		return service.findById(id).map(item -> ResponseEntity.ok(mapper.entityToDTO(item)))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping
-	public ResponseEntity<ResponseDTO> create(@RequestBody RequestDTO item) {
-		return service.create(mapper.requestToEntity(item))
-				.map(itemT -> ResponseEntity.ok(mapper.entityToResponse(itemT)))
+	public ResponseEntity<DTO> create(@RequestBody DTO item) {
+		return service.create(mapper.DTOToEntity(item))
+				.map(itemT -> ResponseEntity.ok(mapper.entityToDTO(itemT)))
 				.orElse(ResponseEntity.badRequest().build());
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<ResponseDTO> updatePut(@PathVariable  Long id, @RequestBody RequestDTO item) {
-		return service.update(id, mapper.requestToEntity(item))
-				.map(itemT -> ResponseEntity.ok(mapper.entityToResponse(itemT)))
+	public ResponseEntity<DTO> updatePut(@PathVariable  Long id, @RequestBody DTO item) {
+		return service.update(id, mapper.DTOToEntity(item))
+				.map(itemT -> ResponseEntity.ok(mapper.entityToDTO(itemT)))
 				.orElse(ResponseEntity.badRequest().build());
 	}
 
 	@PatchMapping("/{id}")
-	public ResponseEntity<ResponseDTO> updatePatch(@PathVariable Long id, @RequestBody RequestDTO item) {
-		return service.updatePatch(id, mapper.requestToEntity(item))
-				.map(itemT -> ResponseEntity.ok(mapper.entityToResponse(itemT)))
+	public ResponseEntity<DTO> updatePatch(@PathVariable Long id, @RequestBody DTO item) {
+		return service.updatePatch(id, mapper.DTOToEntity(item))
+				.map(itemT -> ResponseEntity.ok(mapper.entityToDTO(itemT)))
 				.orElse(ResponseEntity.badRequest().build());
 	}
 

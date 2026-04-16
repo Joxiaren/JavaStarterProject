@@ -1,23 +1,23 @@
 package xyz.jovanstoiljkovic.starter.dtos.menu;
 
 import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
-import xyz.jovanstoiljkovic.starter.dtos.category.CategoryResponseDTOLeaf;
-import xyz.jovanstoiljkovic.starter.dtos.food.FoodResponseDTOLeaf;
+import xyz.jovanstoiljkovic.starter.dtos.category.CategoryDTOLeaf;
+import xyz.jovanstoiljkovic.starter.dtos.food.FoodDTOLeaf;
 import xyz.jovanstoiljkovic.starter.models.Menu;
 
-public class MenuResponseDTO extends BaseDTO<Menu> {
+public class MenuDTO extends BaseDTO<Menu> {
 	
 	private Long id;
 	private Long version;
 	
-	private FoodResponseDTOLeaf food;
-	private CategoryResponseDTOLeaf category;
+	private FoodDTOLeaf food;
+	private CategoryDTOLeaf category;
 	
-	public MenuResponseDTO() {
+	public MenuDTO() {
 		super();
 	}
 
-	public MenuResponseDTO(Long id, Long version, FoodResponseDTOLeaf food, CategoryResponseDTOLeaf category) {
+	public MenuDTO(Long id, Long version, FoodDTOLeaf food, CategoryDTOLeaf category) {
 		super();
 		this.id = id;
 		this.version = version;
@@ -41,19 +41,19 @@ public class MenuResponseDTO extends BaseDTO<Menu> {
 		this.version = version;
 	}
 
-	public FoodResponseDTOLeaf getFood() {
+	public FoodDTOLeaf getFood() {
 		return food;
 	}
 
-	public void setFood(FoodResponseDTOLeaf food) {
+	public void setFood(FoodDTOLeaf food) {
 		this.food = food;
 	}
 
-	public CategoryResponseDTOLeaf getCategory() {
+	public CategoryDTOLeaf getCategory() {
 		return category;
 	}
 
-	public void setCategory(CategoryResponseDTOLeaf category) {
+	public void setCategory(CategoryDTOLeaf category) {
 		this.category = category;
 	}
 	

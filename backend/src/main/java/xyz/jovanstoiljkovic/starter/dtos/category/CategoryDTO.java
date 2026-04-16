@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
-import xyz.jovanstoiljkovic.starter.dtos.menu.MenuResponseDTOLeaf;
+import xyz.jovanstoiljkovic.starter.dtos.menu.MenuDTOLeaf;
 import xyz.jovanstoiljkovic.starter.models.Category;
 
-public class CategoryResponseDTO extends BaseDTO<Category> {
+public class CategoryDTO extends BaseDTO<Category> {
 
 	private Long id;
 	private String name;
-	private List<MenuResponseDTOLeaf> menus = new ArrayList<MenuResponseDTOLeaf>();
+	private List<MenuDTOLeaf> menus = new ArrayList<MenuDTOLeaf>();
 	
-	public CategoryResponseDTO() {
+	public CategoryDTO() {
 		super();
 	}
 
-	public CategoryResponseDTO(Long id, String name) {
+	public CategoryDTO(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public CategoryResponseDTO(Long id, String name, List<MenuResponseDTOLeaf> menus) {
+	public CategoryDTO(Long id, String name, List<MenuDTOLeaf> menus) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -46,11 +46,11 @@ public class CategoryResponseDTO extends BaseDTO<Category> {
 		this.name = name;
 	}
 
-	public List<MenuResponseDTOLeaf> getMenus() {
+	public List<MenuDTOLeaf> getMenus() {
 		return menus;
 	}
 
-	public void setMenus(List<MenuResponseDTOLeaf> menus) {
+	public void setMenus(List<MenuDTOLeaf> menus) {
 		this.menus = menus;
 	}
 	

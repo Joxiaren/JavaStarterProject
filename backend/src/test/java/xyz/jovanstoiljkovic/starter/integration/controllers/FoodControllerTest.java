@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import xyz.jovanstoiljkovic.starter.controllers.FoodController;
-import xyz.jovanstoiljkovic.starter.dtos.food.FoodResponseDTO;
+import xyz.jovanstoiljkovic.starter.dtos.food.FoodDTO;
 import xyz.jovanstoiljkovic.starter.mappers.FoodMapper;
 import xyz.jovanstoiljkovic.starter.models.Food;
 import xyz.jovanstoiljkovic.starter.services.FoodService;
@@ -46,7 +46,7 @@ class FoodControllerTest {
             List<Food> foodList = dataGen.generateMany(5);
             when(service.findAll()).thenReturn(foodList);
 
-            List<FoodResponseDTO> result = controller.findAll();
+            List<FoodDTO> result = controller.findAll();
 
             assertEquals(foodList.size(), result.size());
 
@@ -60,7 +60,7 @@ class FoodControllerTest {
             List<Food> foodList = List.of();
             when(service.findAll()).thenReturn(foodList);
 
-            List<FoodResponseDTO> result = controller.findAll();
+            List<FoodDTO> result = controller.findAll();
 
             assertEquals(0, result.size());
         }

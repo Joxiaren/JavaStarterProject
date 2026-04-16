@@ -5,18 +5,18 @@ import java.util.Date;
 import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
 import xyz.jovanstoiljkovic.starter.models.Food;
 
-public class FoodResponseDTOLeaf extends BaseDTO<Food> {
+public class FoodDTOLeaf extends BaseDTO<Food> {
 	private Long id;
 	private String name;
 	private Double calories;
 	private Integer ingredientCount;
 	private Date expiryDate;
 
-	public FoodResponseDTOLeaf() {
+	public FoodDTOLeaf() {
 		super();
 	}
 
-	public FoodResponseDTOLeaf(Long id, String name, Double calories, Integer ingredientCount, Date expiryDate) {
+	public FoodDTOLeaf(Long id, String name, Double calories, Integer ingredientCount, Date expiryDate) {
 		super();
 		this.id = id;
 		this.name = name;

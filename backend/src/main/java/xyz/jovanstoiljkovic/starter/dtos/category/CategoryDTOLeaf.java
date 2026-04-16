@@ -3,16 +3,16 @@ package xyz.jovanstoiljkovic.starter.dtos.category;
 import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
 import xyz.jovanstoiljkovic.starter.models.Category;
 
-public class CategoryResponseDTOLeaf extends BaseDTO<Category> {
+public class CategoryDTOLeaf extends BaseDTO<Category> {
 
 	private Long id;
 	private String name;
 	
-	public CategoryResponseDTOLeaf() {
+	public CategoryDTOLeaf() {
 		super();
 	}
 
-	public CategoryResponseDTOLeaf(Long id, String name) {
+	public CategoryDTOLeaf(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;

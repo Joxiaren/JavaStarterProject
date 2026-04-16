@@ -1,22 +1,22 @@
 package xyz.jovanstoiljkovic.starter.dtos.menu;
 
 import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
-import xyz.jovanstoiljkovic.starter.dtos.category.CategoryRequestDTO;
-import xyz.jovanstoiljkovic.starter.dtos.food.FoodRequestDTO;
+import xyz.jovanstoiljkovic.starter.dtos.category.CategoryDTO;
+import xyz.jovanstoiljkovic.starter.dtos.food.FoodDTO;
 import xyz.jovanstoiljkovic.starter.models.Menu;
 
 public class MenuRequestDTO extends BaseDTO<Menu> {
 
 	private Long version;
 	
-	private FoodRequestDTO food;
-	private CategoryRequestDTO category;
+	private FoodDTO food;
+	private CategoryDTO category;
 	
 	public MenuRequestDTO() {
 		super();
 	}
 
-	public MenuRequestDTO(Long version, FoodRequestDTO food, CategoryRequestDTO category) {
+	public MenuRequestDTO(Long version, FoodDTO food, CategoryDTO category) {
 		super();
 		this.version = version;
 		this.food = food;
@@ -31,19 +31,19 @@ public class MenuRequestDTO extends BaseDTO<Menu> {
 		this.version = version;
 	}
 
-	public FoodRequestDTO getFood() {
+	public FoodDTO getFood() {
 		return food;
 	}
 
-	public void setFood(FoodRequestDTO food) {
+	public void setFood(FoodDTO food) {
 		this.food = food;
 	}
 
-	public CategoryRequestDTO getCategory() {
+	public CategoryDTO getCategory() {
 		return category;
 	}
 
-	public void setCategory(CategoryRequestDTO category) {
+	public void setCategory(CategoryDTO category) {
 		this.category = category;
 	}
 	
