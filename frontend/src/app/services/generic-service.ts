@@ -7,7 +7,6 @@ export abstract class GenericService<IdType, Type> {
   abstract resource : string;
 
   getAll(){
-    console.log(`Getting all items for ${this.resource}`);
     return this.http.get<Type[]>(`${this.path}${this.resource}`);
   }
   create(item: Type){

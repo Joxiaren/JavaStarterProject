@@ -10,18 +10,15 @@ import { MenuService } from 'app/services/menu-service';
 export class MenuControl extends GenericControl<number, Menu>{
   override service = inject(MenuService);
 
-  foodControl = inject(FoodControl)
-  categoryControl = inject(CategoryControl)
+  foodControl = inject(FoodControl);
+  categoryControl = inject(CategoryControl);
 
   foodItems = computed(() => this.foodControl.items());
   categoryItems = computed(() => this.categoryControl.items());
-
+  
   override getAllItems(): void {
     this.foodControl.getAllItems();
     this.categoryControl.getAllItems();
     super.getAllItems();
-
-    console.log(this.foodItems());
-    console.log(this.foodControl.items());
   }
 }

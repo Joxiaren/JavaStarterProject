@@ -4,18 +4,18 @@
         <input type="number" formControlName="version" name="version"/>
     </div>
     <div>
-        <label for="foodId"> Food: </label>
-        <select formControlName="foodId" name="foodId">
-            @for(food of foods; track $index){
-                <option [ngValue]="food.id">{{food.name}}</option>
+        <label for="food"> Food: </label>
+        <select [compareWith]="compare" formControlName="food" name="food">
+            @for(food of foods(); track $index){
+                <option [ngValue]="food">{{food.name}}</option>
             }
         </select>
     </div>
     <div>
-        <label for="categoryId"> Category: </label>
-        <select formControlName="categoryId" name="categoryId">
-            @for(category of categories; track $index){
-                <option [ngValue]="category.id">{{category.name}}</option>
+        <label for="category"> Category: </label>
+        <select [compareWith]="compare" formControlName="category" name="category">
+            @for(category of categories(); track $index){
+                <option [ngValue]="category">{{category.name}}</option>
             }
         </select>
     </div>

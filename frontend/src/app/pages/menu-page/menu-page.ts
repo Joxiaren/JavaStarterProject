@@ -1,6 +1,8 @@
-import { Component, computed, inject, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, inject, OnChanges, SimpleChanges } from '@angular/core';
 import { MenuForm } from 'app/components/menu-form/menu-form';
 import { MenuTable } from 'app/components/menu-table/menu-table';
+import { CategoryControl } from 'app/controls/category-control/category-control';
+import { FoodControl } from 'app/controls/food-control/food-control';
 import { MenuControl } from 'app/controls/menu-control/menu-control';
 
 @Component({
@@ -12,7 +14,6 @@ import { MenuControl } from 'app/controls/menu-control/menu-control';
 export class MenuPage implements OnChanges{
   menuControl = inject(MenuControl);
 
-  foodItems = computed(() => this.menuControl.foodItems());
   constructor(){
     this.dataRefresh();
   }

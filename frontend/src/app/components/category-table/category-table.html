@@ -1,10 +1,10 @@
 <table>
     <thead>
-        <th></th>
-        <th></th>
+        <th>ID</th>
+        <th>Name</th>
     </thead>
     <tbody>
-        @for(item of itemsShow(); track item){
+        @for(item of itemsShow(); track item.id){
             <tr>
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>

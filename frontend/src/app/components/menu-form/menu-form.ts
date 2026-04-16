@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Signal, signal, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { GenericForm } from 'app/components/generics/generic-form/generic-form';
 
@@ -12,13 +12,17 @@ export class MenuForm extends GenericForm<Menu>{
   override form = new FormGroup({
     id: new FormControl(),
     version: new FormControl(),
-    foodId: new FormControl(),
-    categoryId: new FormControl()    
+    food: new FormControl(),
+    category: new FormControl()    
   });
   
   @Input()
-  foods: Food[] = [];
+  foods: Signal<Food[]> = signal([]);
   @Input()
-  categories: Category[] = [];
+  categories: Signal<Category[]> = signal([]);
 
+  compare(a: GenericModel<number>, b: GenericModel<number>) : boolean{
+    if(a == undefined || b == undefined ) return false;
+    return a.id === b.id;
+  }
 }

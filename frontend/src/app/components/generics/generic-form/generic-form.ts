@@ -17,13 +17,20 @@ export abstract class GenericForm<T> implements OnChanges{
   addEmit = new EventEmitter<T>();
   
   abstract form : FormGroup;
+  itemFormValue : T | null = null;
 
   mode = signal<string>("add");
 
+  formToItem(){
+    this.itemFormValue = this.form.value;  
+  }
 
   addEvent(){
-    if(this.mode() === "add") this.addEmit.emit(this.form.value);
-    else this.editEmit.emit(this.form.value);
+    this.formToItem();
+    
+    if(this.itemFormValue == undefined) return;
+    if(this.mode() === "add") this.addEmit.emit(this.itemFormValue);
+    else this.editEmit.emit(this.itemFormValue);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -39,5 +46,4 @@ export abstract class GenericForm<T> implements OnChanges{
       }
     }
   }
-
 }

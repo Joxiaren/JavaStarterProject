@@ -1,5 +1,5 @@
 <div>
     <h2>Menu</h2>
-    <app-menu-form [editItem]="menuControl.itemEdit()" (addEmit)="menuControl.addItem($event)" (editEmit)="menuControl.editItem($event)" (foods)="menuControl.foodControl.items()" (categories)="menuControl.categoryControl.items()"></app-menu-form>
+    <app-menu-form [editItem]="menuControl.itemEdit()" (addEmit)="menuControl.addItem($event)" (editEmit)="menuControl.editItem($event)" [foods]="menuControl.foodItems" [categories]="menuControl.categoryItems"></app-menu-form>
     <app-menu-table [items]="menuControl.items" (deleteEmit)="menuControl.deleteItem($event)" (editEmit)="menuControl.setEditItem($event)"></app-menu-table>
 </div>

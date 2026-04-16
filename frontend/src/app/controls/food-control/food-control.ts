@@ -13,9 +13,7 @@ export class FoodControl extends GenericControl<number, Food>{
       data.map(d => {
         d.expiryDate = new Date(d.expiryDate);
       });
-      console.log("getting items for Food");
       this.items.set(data);
-      console.log(data);
     });
   }
 }

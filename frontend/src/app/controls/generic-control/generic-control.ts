@@ -15,6 +15,7 @@ export abstract class GenericControl<IdType, Type extends GenericModel<IdType>> 
     })
   }
   addItem(item: any){
+    console.log(item);
     this.service?.create(item).subscribe(data => {
       this.getAllItems();
     });
