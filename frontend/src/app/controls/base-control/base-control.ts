@@ -14,7 +14,7 @@ export abstract class BaseControl<IdType, Type extends BaseModel<IdType>> {
       this.items.set(data);
     })
   }
-  addItem(item: any){
+  addItem(item: Type){
     this.service?.create(item).subscribe(data => {
       this.getAllItems();
     });
@@ -22,7 +22,7 @@ export abstract class BaseControl<IdType, Type extends BaseModel<IdType>> {
   setEditItem(index: number){
     this.itemEdit.set(this.items()[index]);
   }
-  editItem(item: any){
+  editItem(item: Type){
     this.service?.update(item.id, item).subscribe(data => {
       this.getAllItems();
     });
