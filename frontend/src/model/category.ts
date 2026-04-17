@@ -1,3 +1,3 @@
-interface Category extends GenericModel<number>{
+interface Category extends BaseModel<number>{
     name: string
 }

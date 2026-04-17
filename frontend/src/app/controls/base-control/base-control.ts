@@ -1,9 +1,9 @@
 import { signal } from '@angular/core';
-import { GenericService } from 'app/services/generic-service';
+import { BaseService } from 'app/services/base-service';
 
-export abstract class GenericControl<IdType, Type extends GenericModel<IdType>> {
+export abstract class BaseControl<IdType, Type extends BaseModel<IdType>> {
 
-  abstract service: GenericService<IdType, Type>;
+  abstract service: BaseService<IdType, Type>;
 
   items = signal<Type[]>([]);
 
@@ -15,7 +15,6 @@ export abstract class GenericControl<IdType, Type extends GenericModel<IdType>> 
     })
   }
   addItem(item: any){
-    console.log(item);
     this.service?.create(item).subscribe(data => {
       this.getAllItems();
     });

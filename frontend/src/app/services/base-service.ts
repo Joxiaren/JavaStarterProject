@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 
-export abstract class GenericService<IdType, Type> {
+export abstract class BaseService<IdType, Type> {
   http = inject(HttpClient);
   path = "http://localhost:8080/api/"
   abstract resource : string;

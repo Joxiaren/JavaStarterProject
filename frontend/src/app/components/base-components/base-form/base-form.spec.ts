@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenericTable } from './generic-table';
+import { BaseForm } from './base-form';
 
-describe('GenericTable', () => {
-  let component: GenericTable;
-  let fixture: ComponentFixture<GenericTable>;
+describe('BaseForm', () => {
+  let component: BaseForm;
+  let fixture: ComponentFixture<BaseForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GenericTable]
+      imports: [BaseForm]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GenericTable);
+    fixture = TestBed.createComponent(BaseForm);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

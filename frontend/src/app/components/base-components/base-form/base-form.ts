@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, OnChanges, Output, signal, SimpleChange
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-generic-form',
+  selector: 'app-base-form',
   imports: [ReactiveFormsModule],
-  templateUrl: './generic-form.html',
-  styleUrl: './generic-form.css',
+  templateUrl: './base-form.html',
+  styleUrl: './base-form.css',
 })
-export abstract class GenericForm<T> implements OnChanges{
+export abstract class BaseForm<T> implements OnChanges{
   @Input()
   editItem : T | null = null;
 

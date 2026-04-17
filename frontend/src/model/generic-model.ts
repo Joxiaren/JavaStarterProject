@@ -1,3 +1,3 @@
-interface GenericModel<IdType>{
+interface BaseModel<IdType>{
     id: IdType
 }

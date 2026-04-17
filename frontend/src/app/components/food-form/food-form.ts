@@ -1,7 +1,7 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { setThrowInvalidWriteToSignalError } from '@angular/core/primitives/signals';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { GenericForm } from 'app/components/generics/generic-form/generic-form';
+import { BaseForm } from 'app/components/base-components/base-form/base-form';
 
 @Component({
   selector: 'app-food-form',
@@ -9,7 +9,7 @@ import { GenericForm } from 'app/components/generics/generic-form/generic-form';
   templateUrl: './food-form.html',
   styleUrl: './food-form.css',
 })
-export class FoodForm extends GenericForm<Food>{
+export class FoodForm extends BaseForm<Food>{
   override form = new FormGroup({
     id: new FormControl(),
     name: new FormControl(),

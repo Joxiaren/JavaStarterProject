@@ -1,4 +1,4 @@
-interface Menu extends GenericModel<number>{
+interface Menu extends BaseModel<number>{
     version: number,
     food: Food,
     category: Category

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { GenericService } from 'app/services/generic-service';
+import { BaseService } from 'app/services/base-service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService extends GenericService<number, Category>{
+export class CategoryService extends BaseService<number, Category>{
   override resource = "category";
 }

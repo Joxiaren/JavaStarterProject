@@ -1,12 +1,12 @@
 import { Component, computed, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
 
 @Component({
-  selector: 'app-generic-table',
+  selector: 'app-base-table',
   imports: [],
-  templateUrl: './generic-table.html',
-  styleUrl: './generic-table.css',
+  templateUrl: './base-table.html',
+  styleUrl: './base-table.css',
 })
-export class GenericTable<Type> {
+export class BaseTable<Type> {
   @Input()
   items : Signal<Type[]>= signal<Type[]>([]);
   

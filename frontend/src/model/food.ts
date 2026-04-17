@@ -1,4 +1,4 @@
-interface Food extends GenericModel<number>{
+interface Food extends BaseModel<number>{
     name: string,
     calories: number,
     ingredientCount: number,

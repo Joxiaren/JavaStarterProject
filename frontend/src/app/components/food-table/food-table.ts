@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GenericTable } from 'app/components/generics/generic-table/generic-table';
+import { BaseTable } from 'app/components/base-components/base-table/base-table';
 
 @Component({
   selector: 'app-food-table',
@@ -7,6 +7,6 @@ import { GenericTable } from 'app/components/generics/generic-table/generic-tabl
   templateUrl: './food-table.html',
   styleUrl: './food-table.css',
 })
-export class FoodTable extends GenericTable<Food>{
+export class FoodTable extends BaseTable<Food>{
 
 }

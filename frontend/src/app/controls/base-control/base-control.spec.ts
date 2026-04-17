@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GenericControl } from './generic-control';
+import { BaseControl } from './base-control';
 
-describe('GenericControl', () => {
-  let service: GenericControl<any, any>;
+describe('BaseControl', () => {
+  let service: BaseControl<any, any>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GenericControl);
+    service = TestBed.inject(BaseControl);
   });
 
   it('should be created', () => {

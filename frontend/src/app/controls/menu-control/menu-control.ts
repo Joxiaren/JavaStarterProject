@@ -1,13 +1,13 @@
 import { computed, inject, Injectable } from '@angular/core';
 import { CategoryControl } from 'app/controls/category-control/category-control';
 import { FoodControl } from 'app/controls/food-control/food-control';
-import { GenericControl } from 'app/controls/generic-control/generic-control';
+import { BaseControl } from 'app/controls/base-control/base-control';
 import { MenuService } from 'app/services/menu-service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MenuControl extends GenericControl<number, Menu>{
+export class MenuControl extends BaseControl<number, Menu>{
   override service = inject(MenuService);
 
   foodControl = inject(FoodControl);
