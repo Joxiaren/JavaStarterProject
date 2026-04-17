@@ -1,0 +1,21 @@
+:host{
+    display: flex;
+    background-color: rgb(146, 76, 9);
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+a{
+    color: black;
+    background: #ffffff;
+    background: linear-gradient(162deg,rgba(255, 255, 255, 1) 0%, rgba(219, 215, 215, 1) 35%, rgba(196, 196, 196, 1) 65%, rgba(176, 176, 176, 1) 80%);
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0px 5px;
+
+    transition: all ease-in-out 0.5s;
+}
+
+a:hover{
+background: linear-gradient(132deg,rgba(255, 255, 255, 1) 0%, rgba(255, 227, 143, 1) 7%, rgba(255, 215, 96, 1) 13%, rgba(255, 218, 107, 1) 20%, rgba(255, 214, 112, 1) 26%, rgba(255, 183, 0, 1) 80%);
+}

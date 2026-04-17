@@ -4,21 +4,16 @@ import xyz.jovanstoiljkovic.starter.dtos.BaseDTO;
 
 public abstract class BaseMapper<
 		T,
-		RequestDTO extends BaseDTO<T>,
-		ResponseDTO extends BaseDTO<T>,
-		ResponseDTOLeaf extends BaseDTO<T>
+		DTO extends BaseDTO<T>,
+		DTOLeaf extends BaseDTO<T>
 > {
 
-	public abstract ResponseDTO entityToResponse(T entity);
+	public abstract DTO entityToDTO(T entity);
 
-	public abstract RequestDTO entityToRequest(T entity);
+	public abstract T DTOToEntity(DTO response);
 
-	public abstract T responseToEntity(ResponseDTO response);
+	public abstract T leafToEntity(DTOLeaf response);
 
-	public abstract T requestToEntity(RequestDTO request);
-
-	public abstract T leafToEntity(ResponseDTOLeaf response);
-
-	public abstract ResponseDTOLeaf entityToLeaf(T entity);
+	public abstract DTOLeaf entityToLeaf(T entity);
 
 }

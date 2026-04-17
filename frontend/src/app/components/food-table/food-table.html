@@ -1,0 +1,25 @@
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Calories</th>
+        <th>IngredientCount</th>
+        <th>Expiry Date</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        @for(item of itemsShow(); track item.id){
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.calories}}</td>
+                <td>{{item.ingredientCount}}</td>
+                <td>{{item.expiryDate.getFullYear()}}/{{item.expiryDate.getMonth() + 1}}/{{item.expiryDate.getDate()}}</td>
+                <td>
+                    <button (click)="deleteEvent($index)">Izbrisi</button>
+                    <button (click)="editEvent($index)">Izmeni</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+<form [formGroup]="form" (submit)="addEvent()">
+    <div>
+        <label for="version"> Version: </label>
+        <input type="number" formControlName="version" name="version"/>
+    </div>
+    <div>
+        <label for="food"> Food: </label>
+        <select [compareWith]="compare" formControlName="food" name="food">
+            @for(food of foods(); track $index){
+                <option [ngValue]="food">{{food.name}}</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="category"> Category: </label>
+        <select [compareWith]="compare" formControlName="category" name="category">
+            @for(category of categories(); track $index){
+                <option [ngValue]="category">{{category.name}}</option>
+            }
+        </select>
+    </div>
+    <div>
+        <button>
+            @if (mode() === "add"){
+                Dodaj 
+            }
+            @else{
+                Izmeni
+            }
+        </button>
+    </div>
+</form>

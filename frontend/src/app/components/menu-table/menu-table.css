@@ -1,0 +1,11 @@
+td,th {
+    border: 2px solid black;
+}
+table{
+    border-collapse: collapse;
+} 
+
+td input{
+    display: inline;
+    max-width: 100px;
+}

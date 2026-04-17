@@ -1,0 +1,28 @@
+<form [formGroup]="form" (submit)="addEvent()">
+    <div>
+        <label for="name"> Name: </label>
+        <input type="text" formControlName="name" name="name"/>
+    </div>
+    <div>
+        <label for="calories"> Calories: </label>
+        <input type="number" formControlName="calories" name="calories"/>
+    </div>
+    <div>
+        <label for="ingredientCount"> Ingredient Count: </label>
+        <input type="number" formControlName="ingredientCount" name="ingredientCount"/>
+    </div>
+    <div>
+        <label for="expiryDate"> Expiry Date: </label>
+        <input type="date" formControlName="expiryDate" name="expiryDate"/>
+    </div>
+    <div>
+        <button>
+            @if (mode() === "add"){
+                Dodaj 
+            }
+            @else{
+                Izmeni
+            }
+        </button>
+    </div>
+</form>

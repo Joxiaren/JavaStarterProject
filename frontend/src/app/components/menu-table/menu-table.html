@@ -1,0 +1,23 @@
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Version</th>
+        <th>Food ID</th>
+        <th>Category ID</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        @for(item of itemsShow(); track item.id){
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.version}}</td>
+                <td>{{item.food.id}}</td>
+                <td>{{item.category.id}}</td>
+                <td>
+                    <button (click)="deleteEvent($index)">Izbrisi</button>
+                    <button (click)="editEvent($index)">Izmeni</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

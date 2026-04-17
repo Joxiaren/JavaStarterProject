@@ -1,0 +1,5 @@
+<div>
+    <h2>Category</h2>
+    <app-category-form [editItem]="categoryControl.itemEdit()" (addEmit)="categoryControl.addItem($event)" (editEmit)="categoryControl.editItem($event)"></app-category-form>
+    <app-category-table [items]="categoryControl.items" (deleteEmit)="categoryControl.deleteItem($event)" (editEmit)="categoryControl.setEditItem($event)"></app-category-table>
+</div>
