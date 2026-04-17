@@ -3,7 +3,6 @@ package xyz.jovanstoiljkovic.starter.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import xyz.jovanstoiljkovic.starter.dtos.menu.MenuRequestDTO;
 import xyz.jovanstoiljkovic.starter.dtos.menu.MenuDTO;
 import xyz.jovanstoiljkovic.starter.dtos.menu.MenuDTOLeaf;
 import xyz.jovanstoiljkovic.starter.mappers.MenuMapper;

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import xyz.jovanstoiljkovic.starter.dtos.category.CategoryDTO;
 import xyz.jovanstoiljkovic.starter.dtos.category.CategoryDTOLeaf;
-import xyz.jovanstoiljkovic.starter.dtos.category.CategoryRequestDTO;
 import xyz.jovanstoiljkovic.starter.models.Category;
 
 @Component

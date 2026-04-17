@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import xyz.jovanstoiljkovic.starter.dtos.category.CategoryDTOLeaf;
-import xyz.jovanstoiljkovic.starter.dtos.category.CategoryRequestDTO;
 import xyz.jovanstoiljkovic.starter.dtos.category.CategoryDTO;
 import xyz.jovanstoiljkovic.starter.mappers.CategoryMapper;
 import xyz.jovanstoiljkovic.starter.models.Category;
