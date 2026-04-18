@@ -1,22 +1,22 @@
 import { Component, inject } from '@angular/core';
-import { FoodForm } from 'app/components/food-form/food-form';
-import { FoodTable } from 'app/components/food-table/food-table';
-import { FoodControl } from 'app/controls/food-control/food-control';
+import { FoodTable } from '../../components/food-table/food-table';
+import { FoodForm } from '../../components/food-form/food-form';
+import { FoodControl } from '../../controls/food-control/food-control';
 
 @Component({
   selector: 'app-food-page',
-  imports: [ FoodTable, FoodForm ],
+  imports: [FoodTable, FoodForm],
   templateUrl: './food-page.html',
   styleUrl: './food-page.css',
 })
 export class FoodPage {
   foodControl = inject(FoodControl);
 
-  constructor(){
+  constructor() {
     this.dataRefresh();
   }
 
-  dataRefresh(){
+  dataRefresh() {
     this.foodControl.getAllItems();
   }
 }

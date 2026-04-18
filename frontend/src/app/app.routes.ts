@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { CategoryPage } from 'app/pages/category-page/category-page';
-import { FoodPage } from 'app/pages/food-page/food-page';
-import { MainPage } from 'app/pages/main-page/main-page';
-import { MenuPage } from 'app/pages/menu-page/menu-page';
-import { NotFoundPage } from 'app/pages/not-found-page/not-found-page';
+import { MainPage } from './pages/main-page/main-page';
+import { FoodPage } from './pages/food-page/food-page';
+import { MenuPage } from './pages/menu-page/menu-page';
+import { CategoryPage } from './pages/category-page/category-page';
+import { NotFoundPage } from './pages/not-found-page/not-found-page';
 
 export const routes: Routes = [
     {

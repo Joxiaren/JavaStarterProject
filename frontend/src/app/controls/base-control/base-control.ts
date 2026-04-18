@@ -1,5 +1,6 @@
 import { signal } from '@angular/core';
-import { BaseService } from 'app/services/base-service';
+import { BaseModel } from '../../../model/base-model';
+import { BaseService } from '../../services/base-service';
 
 export abstract class BaseControl<IdType, Type extends BaseModel<IdType>> {
 
@@ -9,28 +10,28 @@ export abstract class BaseControl<IdType, Type extends BaseModel<IdType>> {
 
   itemEdit = signal<Type | null>(null);
 
-  getAllItems(){
+  getAllItems() {
     this.service?.getAll().subscribe(data => {
       this.items.set(data);
     })
   }
-  addItem(item: Type){
-    this.service?.create(item).subscribe(data => {
+  addItem(item: Type) {
+    this.service?.create(item).subscribe(() => {
       this.getAllItems();
     });
   }
-  setEditItem(index: number){
+  setEditItem(index: number) {
     this.itemEdit.set(this.items()[index]);
   }
-  editItem(item: Type){
-    this.service?.update(item.id, item).subscribe(data => {
+  editItem(item: Type) {
+    this.service?.update(item.id, item).subscribe(() => {
       this.getAllItems();
     });
     this.itemEdit.set(null);
   }
-  deleteItem(index: number){
+  deleteItem(index: number) {
     let id = this.items()[index]["id"];
-    this.service?.delete(id).subscribe(data => {
+    this.service?.delete(id).subscribe(() => {
       this.getAllItems();
     });
     this.itemEdit.set(null);

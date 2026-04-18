@@ -1,14 +1,17 @@
-*{
+* {
     font-family: "Roboto", sans-serif;
 }
 
-html,body{
+html,
+body {
     margin: 0px;
     padding: 0px;
     width: 100%;
     height: 100%;
 }
 
-body{
+body {
     background-color: #ffddb7;
-}/* You can add global styles to this file, and also import other style files */
+}
+
+/* You can add global styles to this file, and also import other style files */
