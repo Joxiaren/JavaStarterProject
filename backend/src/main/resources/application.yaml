@@ -16,6 +16,6 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: ${DB_DIALECT:org.hibernate.dialect.MySQLDialect}
+        dialect: ${DB_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
 server:
     port: ${PORT:8080}

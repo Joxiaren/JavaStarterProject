@@ -5,18 +5,18 @@ import { FoodControl } from 'app/controls/food-control/food-control';
 
 @Component({
   selector: 'app-food-page',
-  imports: [ FoodTable, FoodForm ],
+  imports: [FoodTable, FoodForm],
   templateUrl: './food-page.html',
   styleUrl: './food-page.css',
 })
 export class FoodPage {
   foodControl = inject(FoodControl);
 
-  constructor(){
+  constructor() {
     this.dataRefresh();
   }
 
-  dataRefresh(){
+  dataRefresh() {
     this.foodControl.getAllItems();
   }
 }

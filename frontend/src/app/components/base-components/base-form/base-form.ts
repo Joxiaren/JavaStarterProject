@@ -1,46 +1,42 @@
-import { Component, EventEmitter, Input, OnChanges, Output, signal, SimpleChanges } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Directive, EventEmitter, Input, OnChanges, Output, signal, SimpleChanges } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { BaseModel } from 'model/base-model';
 
-@Component({
-  selector: 'app-base-form',
-  imports: [ReactiveFormsModule],
-  templateUrl: './base-form.html',
-  styleUrl: './base-form.css',
-})
-export abstract class BaseForm<T> implements OnChanges{
+@Directive()
+export abstract class BaseForm<IdType, Type extends BaseModel<IdType>> implements OnChanges {
   @Input()
-  editItem : T | null = null;
+  editItem: Type | null = null;
 
-  @Output() 
-  editEmit = new EventEmitter<T>();
   @Output()
-  addEmit = new EventEmitter<T>();
-  
-  abstract form : FormGroup;
-  itemFormValue : T | null = null;
+  editEmit = new EventEmitter<Type>();
+  @Output()
+  addEmit = new EventEmitter<Type>();
+
+  abstract form: FormGroup;
+  itemFormValue: Type | null = null;
 
   mode = signal<string>("add");
 
-  formToItem(){
-    this.itemFormValue = this.form.value;  
+  formToItem() {
+    this.itemFormValue = this.form.value;
   }
 
-  addEvent(){
+  addEvent() {
     this.formToItem();
-    
-    if(this.itemFormValue == undefined) return;
-    if(this.mode() === "add") this.addEmit.emit(this.itemFormValue);
+
+    if (this.itemFormValue == undefined) return;
+    if (this.mode() === "add") this.addEmit.emit(this.itemFormValue);
     else this.editEmit.emit(this.itemFormValue);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes["editItem"] == undefined) return;
-    if(changes["editItem"].currentValue != changes["editItem"].previousValue){
-      if(this.editItem == undefined) {
+    if (changes["editItem"] == undefined) return;
+    if (changes["editItem"].currentValue != changes["editItem"].previousValue) {
+      if (this.editItem == undefined) {
         this.form.reset();
         this.mode.set("add");
       }
-      else{
+      else {
         this.form.setValue(this.editItem);
         this.mode.set("edit");
       }
