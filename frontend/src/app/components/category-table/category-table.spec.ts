@@ -9,8 +9,7 @@ describe('CategoryTable', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CategoryTable]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CategoryTable);
     component = fixture.componentInstance;

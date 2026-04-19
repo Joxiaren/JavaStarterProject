@@ -12,10 +12,10 @@ import { CategoryControl } from 'app/controls/category-control/category-control'
 export class CategoryPage {
   categoryControl = inject(CategoryControl);
 
-  constructor(){
+  constructor() {
     this.dataRefresh();
   }
-  dataRefresh(){
+  dataRefresh() {
     this.categoryControl.getAllItems();
   }
 }

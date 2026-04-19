@@ -9,8 +9,7 @@ describe('FoodTable', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FoodTable]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FoodTable);
     component = fixture.componentInstance;
