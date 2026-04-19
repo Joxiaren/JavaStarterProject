@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { environment } from 'environments/environment';
 import { BaseModel } from 'model/base-model';
 
 export abstract class BaseService<IdType, Type extends BaseModel<IdType>> {
   http = inject(HttpClient);
-  path = "http://localhost:8080/api/"
-  abstract resource: string;
+  path = environment.BACKEND_URL;
+  abstract resource : string;
 
   getAll() {
     return this.http.get<Type[]>(`${this.path}${this.resource}`);
