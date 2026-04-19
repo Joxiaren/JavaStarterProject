@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { environment } from 'environments/environment';
 
 export abstract class BaseService<IdType, Type> {
   http = inject(HttpClient);
-  path = "http://localhost:8080/api/"
+  path = environment.BACKEND_URL;
   abstract resource : string;
 
   getAll(){

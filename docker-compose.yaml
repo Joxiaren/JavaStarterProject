@@ -67,8 +67,30 @@ services:
           memory: 1G     
     depends_on:
       db:
-        condition: service_healthy        
-     
+        condition: service_healthy    
+
+  frontend:
+    container_name: frontend
+    build: 
+      context: ./frontend/
+      dockerfile: Dockerfile
+    env_file:
+      - path: ./frontend/.env
+        required: false
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 3s
+      timeout: 2s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 1G     
+    # depends_on:
+    #   backend:
+    #     condition: service_healthy    
+
   nginx:
     container_name: nginx
     restart: always
@@ -96,6 +118,8 @@ services:
       pgadmin:
         condition: service_healthy
       backend:
+        condition: service_healthy
+      frontend:
         condition: service_healthy
 
 volumes:
