@@ -1,7 +1,7 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { BaseForm } from '../base-components/base-form/base-form';
-import { Food } from '../../../model/food';
+import { BaseForm } from 'app/components/base-components/base-form/base-form';
+import { Food } from 'model/food';
 
 @Component({
   selector: 'app-food-form',

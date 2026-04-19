@@ -1,5 +1,5 @@
 import { computed, Directive, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
-import { BaseModel } from '../../../../model/base-model';
+import { BaseModel } from 'model/base-model';
 
 @Directive()
 export class BaseTable<IdType, Type extends BaseModel<IdType>> {

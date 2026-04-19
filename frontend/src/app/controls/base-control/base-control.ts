@@ -1,6 +1,6 @@
 import { signal } from '@angular/core';
-import { BaseModel } from '../../../model/base-model';
-import { BaseService } from '../../services/base-service';
+import { BaseService } from 'app/services/base-service';
+import { BaseModel } from 'model/base-model';
 
 export abstract class BaseControl<IdType, Type extends BaseModel<IdType>> {
 

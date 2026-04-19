@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { BaseModel } from '../../model/base-model';
+import { BaseModel } from 'model/base-model';
 
 export abstract class BaseService<IdType, Type extends BaseModel<IdType>> {
   http = inject(HttpClient);

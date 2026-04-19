@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Menu } from '../../../model/menu';
-import { BaseTable } from '../base-components/base-table/base-table';
+import { BaseTable } from 'app/components/base-components/base-table/base-table';
+import { Menu } from 'model/menu';
 
 @Component({
   selector: 'app-menu-table',

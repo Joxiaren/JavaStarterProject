@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base-service';
-import { Menu } from '../../model/menu';
+import { Menu } from 'model/menu';
 
 
 @Injectable({

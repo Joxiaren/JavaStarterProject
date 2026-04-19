@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { BaseForm } from '../base-components/base-form/base-form';
-import { Category } from '../../../model/category';
+import { BaseForm } from 'app/components/base-components/base-form/base-form';
+import { Category } from 'model/category';
 
 @Component({
   selector: 'app-category-form',

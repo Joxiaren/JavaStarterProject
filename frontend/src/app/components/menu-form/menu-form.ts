@@ -1,10 +1,10 @@
 import { Component, Input, Signal, signal, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Menu } from '../../../model/menu';
-import { BaseForm } from '../base-components/base-form/base-form';
-import { Food } from '../../../model/food';
-import { Category } from '../../../model/category';
-import { BaseModel } from '../../../model/base-model';
+import { BaseForm } from 'app/components/base-components/base-form/base-form';
+import { BaseModel } from 'model/base-model';
+import { Category } from 'model/category';
+import { Food } from 'model/food';
+import { Menu } from 'model/menu';
 
 @Component({
   selector: 'app-menu-form',

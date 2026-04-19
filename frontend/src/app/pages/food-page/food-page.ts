@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { FoodTable } from '../../components/food-table/food-table';
-import { FoodForm } from '../../components/food-form/food-form';
-import { FoodControl } from '../../controls/food-control/food-control';
+import { FoodForm } from 'app/components/food-form/food-form';
+import { FoodTable } from 'app/components/food-table/food-table';
+import { FoodControl } from 'app/controls/food-control/food-control';
 
 @Component({
   selector: 'app-food-page',

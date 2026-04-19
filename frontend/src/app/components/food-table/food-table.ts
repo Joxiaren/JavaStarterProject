@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Food } from '../../../model/food';
-import { BaseTable } from '../base-components/base-table/base-table';
+import { BaseTable } from 'app/components/base-components/base-table/base-table';
+import { Food } from 'model/food';
 
 @Component({
   selector: 'app-food-table',

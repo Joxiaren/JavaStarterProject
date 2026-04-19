@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseTable } from '../base-components/base-table/base-table';
-import { Category } from '../../../model/category';
+import { BaseTable } from 'app/components/base-components/base-table/base-table';
+import { Category } from 'model/category';
 
 @Component({
   selector: 'app-category-table',

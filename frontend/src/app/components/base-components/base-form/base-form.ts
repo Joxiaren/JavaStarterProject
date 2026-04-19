@@ -1,6 +1,6 @@
 import { Directive, EventEmitter, Input, OnChanges, Output, signal, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { BaseModel } from '../../../../model/base-model';
+import { BaseModel } from 'model/base-model';
 
 @Directive()
 export abstract class BaseForm<IdType, Type extends BaseModel<IdType>> implements OnChanges {

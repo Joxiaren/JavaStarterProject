@@ -1,8 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { BaseControl } from '../base-control/base-control';
-import { CategoryService } from '../../services/category-service';
-import { Category } from '../../../model/category';
-
+import { BaseControl } from 'app/controls/base-control/base-control';
+import { CategoryService } from 'app/services/category-service';
+import { Category } from 'model/category';
 
 @Injectable({
   providedIn: 'root',

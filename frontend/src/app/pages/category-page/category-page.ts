@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { CategoryForm } from '../../components/category-form/category-form';
-import { CategoryTable } from '../../components/category-table/category-table';
-import { CategoryControl } from '../../controls/category-control/category-control';
+import { CategoryForm } from 'app/components/category-form/category-form';
+import { CategoryTable } from 'app/components/category-table/category-table';
+import { CategoryControl } from 'app/controls/category-control/category-control';
 
 @Component({
   selector: 'app-category-page',
