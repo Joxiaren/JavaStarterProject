@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { BaseService } from './base-service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { BaseModel } from '../../model/base-model';
+import { BaseModel } from 'model/base-model';
 
 describe('BaseService', () => {
   let service: BaseService<number, BaseModel<number>>;
