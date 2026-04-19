@@ -78,7 +78,7 @@ services:
       - path: ./frontend/.env
         required: false
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
       interval: 3s
       timeout: 2s
       retries: 5
@@ -87,9 +87,9 @@ services:
       resources:
         limits:
           memory: 1G     
-    # depends_on:
-    #   backend:
-    #     condition: service_healthy    
+    depends_on:
+      backend:
+        condition: service_started    
 
   nginx:
     container_name: nginx
