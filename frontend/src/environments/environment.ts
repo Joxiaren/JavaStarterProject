@@ -1,3 +1,3 @@
 export const environment = {
-    BACKEND_URL: "http://localhost/api/"
+  BACKEND_URL: "http://localhost/api/"
 };

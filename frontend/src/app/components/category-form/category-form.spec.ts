@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CategoryForm } from './category-form';
+import { CategoryForm } from "./category-form";
 
-describe('CategoryForm', () => {
+describe("CategoryForm", () => {
   let component: CategoryForm;
   let fixture: ComponentFixture<CategoryForm>;
 
@@ -16,7 +16,7 @@ describe('CategoryForm', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

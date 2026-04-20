@@ -1,6 +1,6 @@
-import { Directive, EventEmitter, Input, OnChanges, Output, signal, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { BaseModel } from 'model/base-model';
+import { Directive, EventEmitter, Input, OnChanges, Output, signal, SimpleChanges } from "@angular/core";
+import { FormGroup } from "@angular/forms";
+import { BaseModel } from "model/base-model";
 
 @Directive()
 export abstract class BaseForm<IdType, Type extends BaseModel<IdType>> implements OnChanges {
@@ -35,8 +35,7 @@ export abstract class BaseForm<IdType, Type extends BaseModel<IdType>> implement
       if (this.editItem == undefined) {
         this.form.reset();
         this.mode.set("add");
-      }
-      else {
+      } else {
         this.form.setValue(this.editItem);
         this.mode.set("edit");
       }

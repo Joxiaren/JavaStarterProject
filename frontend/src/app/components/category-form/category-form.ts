@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { BaseForm } from 'app/components/base-components/base-form/base-form';
-import { Category } from 'model/category';
+import { Component } from "@angular/core";
+import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { BaseForm } from "app/components/base-components/base-form/base-form";
+import { Category } from "model/category";
 
 @Component({
-  selector: 'app-category-form',
+  selector: "app-category-form",
   imports: [ReactiveFormsModule],
-  templateUrl: './category-form.html',
-  styleUrl: './category-form.css',
+  templateUrl: "./category-form.html",
+  styleUrl: "./category-form.css"
 })
 export class CategoryForm extends BaseForm<number, Category> {
   override form = new FormGroup({
@@ -15,5 +15,4 @@ export class CategoryForm extends BaseForm<number, Category> {
     name: new FormControl(),
     menus: new FormControl()
   });
-
 }

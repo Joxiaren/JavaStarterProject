@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FoodForm } from './food-form';
+import { FoodForm } from "./food-form";
 
-describe('FoodForm', () => {
+describe("FoodForm", () => {
   let component: FoodForm;
   let fixture: ComponentFixture<FoodForm>;
 
@@ -16,7 +16,7 @@ describe('FoodForm', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

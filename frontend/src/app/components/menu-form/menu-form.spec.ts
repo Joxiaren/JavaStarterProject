@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MenuForm } from './menu-form';
+import { MenuForm } from "./menu-form";
 
-describe('MenuForm', () => {
+describe("MenuForm", () => {
   let component: MenuForm;
   let fixture: ComponentFixture<MenuForm>;
 
@@ -16,7 +16,7 @@ describe('MenuForm', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

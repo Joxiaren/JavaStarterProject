@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CategoryTable } from './category-table';
+import { CategoryTable } from "./category-table";
 
-describe('CategoryTable', () => {
+describe("CategoryTable", () => {
   let component: CategoryTable;
   let fixture: ComponentFixture<CategoryTable>;
 
@@ -16,7 +16,7 @@ describe('CategoryTable', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

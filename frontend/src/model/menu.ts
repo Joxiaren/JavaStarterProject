@@ -3,7 +3,7 @@ import { Category } from "./category";
 import { Food } from "./food";
 
 export interface Menu extends BaseModel<number> {
-    version: number,
-    food: Food,
-    category: Category
+  version: number;
+  food: Food;
+  category: Category;
 }
