@@ -55,7 +55,8 @@ services:
     healthcheck:
       #test: ["CMD", "curl", "-f", "http://localhost/api/food"]
       #test: ["CMD-SHELL", "timeout 1s bash -c ':> /dev/tcp/localhost/$$PORT' || exit 1"]
-      test: ["CMD-SHELL", "nc -zv localhost 8080"]
+      #test: ["CMD-SHELL", "nc -zv localhost 8080"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health/readiness"]
       interval: 5s
       timeout: 3s
       retries: 10
