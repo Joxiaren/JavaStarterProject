@@ -45,3 +45,11 @@ logging:
   file:
       path: "logs/"
       name: "logs/application.log"
+  pattern: 
+      file: "%d %-5level - %msg%n"
+      console: "%d %-5level - %msg%n"
+  logback: 
+      rollingpolicy:
+        max-file-size: "10MB"
+        total-size-cap: "50MB"
+        max-history: 5

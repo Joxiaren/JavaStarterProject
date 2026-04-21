@@ -53,6 +53,7 @@ services:
         - path: ./backend/.env
           required: false
     healthcheck:
+    
       #test: ["CMD", "curl", "-f", "http://localhost/api/food"]
       #test: ["CMD-SHELL", "timeout 1s bash -c ':> /dev/tcp/localhost/$$PORT' || exit 1"]
       #test: ["CMD-SHELL", "nc -zv localhost 8080"]
@@ -68,7 +69,9 @@ services:
           memory: 1G     
     depends_on:
       db:
-        condition: service_healthy    
+        condition: service_healthy   
+    volumes:
+      - ./backend/logs:/app/logs 
 
   frontend:
     container_name: frontend
