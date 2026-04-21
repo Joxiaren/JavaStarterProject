@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { MenuControl } from './menu-control';
+import { MenuControl } from "./menu-control";
 
-describe('MenuControl', () => {
+describe("MenuControl", () => {
   let service: MenuControl;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('MenuControl', () => {
     service = TestBed.inject(MenuControl);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

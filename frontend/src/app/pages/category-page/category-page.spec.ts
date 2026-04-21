@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CategoryPage } from './category-page';
-import { provideHttpClient } from '@angular/common/http';
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { CategoryPage } from "./category-page";
+import { provideHttpClient } from "@angular/common/http";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 
-describe('CategoryPage', () => {
+describe("CategoryPage", () => {
   let component: CategoryPage;
   let fixture: ComponentFixture<CategoryPage>;
   let httpMock: HttpTestingController;
@@ -12,10 +12,7 @@ describe('CategoryPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CategoryPage],
-      providers: [
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ]
+      providers: [provideHttpClient(), provideHttpClientTesting()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CategoryPage);
@@ -24,9 +21,9 @@ describe('CategoryPage', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     fixture.detectChanges();
-    const req = httpMock.expectOne('http://localhost:8080/api/category');
+    const req = httpMock.expectOne("http://localhost:8080/api/category");
     req.flush([]);
     expect(component).toBeTruthy();
   });

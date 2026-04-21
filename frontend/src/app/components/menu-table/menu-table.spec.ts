@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MenuTable } from './menu-table';
+import { MenuTable } from "./menu-table";
 
-describe('MenuTable', () => {
+describe("MenuTable", () => {
   let component: MenuTable;
   let fixture: ComponentFixture<MenuTable>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MenuTable]
-    })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MenuTable);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

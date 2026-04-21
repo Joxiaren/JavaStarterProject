@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { CategoryControl } from './category-control';
+import { CategoryControl } from "./category-control";
 
-describe('CategoryControl', () => {
+describe("CategoryControl", () => {
   let service: CategoryControl;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('CategoryControl', () => {
     service = TestBed.inject(CategoryControl);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

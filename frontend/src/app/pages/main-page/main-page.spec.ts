@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MainPage } from './main-page';
+import { MainPage } from "./main-page";
 
-describe('MainPage', () => {
+describe("MainPage", () => {
   let component: MainPage;
   let fixture: ComponentFixture<MainPage>;
 
@@ -16,7 +16,7 @@ describe('MainPage', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

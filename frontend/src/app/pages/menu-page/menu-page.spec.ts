@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MenuPage } from './menu-page';
-import { provideHttpClient } from '@angular/common/http';
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { MenuPage } from "./menu-page";
+import { provideHttpClient } from "@angular/common/http";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 
-describe('MenuPage', () => {
+describe("MenuPage", () => {
   let component: MenuPage;
   let fixture: ComponentFixture<MenuPage>;
   let httpMock: HttpTestingController;
@@ -12,10 +12,7 @@ describe('MenuPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MenuPage],
-      providers: [
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ]
+      providers: [provideHttpClient(), provideHttpClientTesting()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MenuPage);
@@ -24,9 +21,9 @@ describe('MenuPage', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     fixture.detectChanges();
-    const req = httpMock.expectOne('http://localhost:8080/api/menu');
+    const req = httpMock.expectOne("http://localhost:8080/api/menu");
     req.flush([]);
     expect(component).toBeTruthy();
   });
