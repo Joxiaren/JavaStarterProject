@@ -19,3 +19,21 @@ spring:
         dialect: ${DB_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
 server:
     port: ${PORT:8080}
+management:
+  endpoints:
+    access:
+      default: none
+    web:
+      exposure:
+        include: "health"
+  endpoint:
+    health:
+      access: read-only
+      probes:
+        enabled: true
+      #show-details: always #for debugging, alternative "always/when-authorized"
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
