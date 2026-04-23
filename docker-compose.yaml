@@ -52,8 +52,6 @@ services:
     env_file: 
         - path: ./backend/.env
           required: false
-    environment:
-      - TZ=${TZ}
 
     healthcheck:
     
@@ -107,8 +105,9 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/logs:/var/log/nginx
-    environment:
-      - TZ=Europe/Belgrade 
+    env_file: 
+        - path: ./nginx/.env
+          required: false
     healthcheck:
       #test: ["CMD", "curl", "-f", "http://localhost:80"]
       #test: ["CMD-SHELL", "nc -z localhost 80 || exit 1"]
