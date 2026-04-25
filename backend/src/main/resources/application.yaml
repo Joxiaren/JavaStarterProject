@@ -40,7 +40,7 @@ management:
 logging:
   level:
     root: "warn"
-    org.springframework.web: "debug"
+    org.springframework.web: "warn"
     org.hibernate: "error"
   file:
       path: "logs/"
