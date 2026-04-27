@@ -52,7 +52,9 @@ services:
     env_file: 
         - path: ./backend/.env
           required: false
+
     healthcheck:
+    
       #test: ["CMD", "curl", "-f", "http://localhost/api/food"]
       #test: ["CMD-SHELL", "timeout 1s bash -c ':> /dev/tcp/localhost/$$PORT' || exit 1"]
       #test: ["CMD-SHELL", "nc -zv localhost 8080"]
@@ -68,7 +70,9 @@ services:
           memory: 1G     
     depends_on:
       db:
-        condition: service_healthy    
+        condition: service_healthy   
+    volumes:
+      - ./backend/logs:/app/logs
 
   frontend:
     container_name: frontend
@@ -100,6 +104,10 @@ services:
       - 80:80
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/logs:/var/log/nginx
+    env_file: 
+        - path: ./nginx/.env
+          required: false
     healthcheck:
       #test: ["CMD", "curl", "-f", "http://localhost:80"]
       #test: ["CMD-SHELL", "nc -z localhost 80 || exit 1"]
@@ -122,6 +130,8 @@ services:
         condition: service_healthy
       frontend:
         condition: service_healthy
+       
+
 
 volumes:
   db_data:      
