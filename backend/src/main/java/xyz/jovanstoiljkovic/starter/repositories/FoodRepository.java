@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import xyz.jovanstoiljkovic.starter.models.Food;
 
 @Repository
-public interface FoodRepository extends BaseRepository<Food, Long> {
+public interface FoodRepository extends BaseRepository<Food> {
 	
 }
