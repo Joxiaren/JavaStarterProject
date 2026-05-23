@@ -3,15 +3,14 @@ package xyz.jovanstoiljkovic.starter.services;
 import java.lang.reflect.Field;
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
-
 import xyz.jovanstoiljkovic.starter.models.BaseEntity;
+import xyz.jovanstoiljkovic.starter.repositories.BaseRepository;
 
 public abstract class BaseService<T extends BaseEntity> {
 
-	CrudRepository<T, Long> repo;
+	BaseRepository<T> repo;
 
-  public BaseService(CrudRepository<T, Long> repo) {
+  public BaseService(BaseRepository<T> repo) {
     this.repo = repo;
   }
 	public Iterable<T> findAll() {
